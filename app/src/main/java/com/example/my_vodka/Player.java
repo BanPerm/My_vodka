@@ -12,14 +12,14 @@ import com.example.my_vodka.boissons.AlcoolAbstract;
 import java.util.ArrayList;
 
 public class Player extends Activity implements View.OnClickListener {
-    private double tauxAlcoolemie = 0;
-    private double bonusClick = 0;
-    private double bonusPassif = 0;
-    private double bonusActif = 0;
-    private ArrayList<AlcoolAbstract> list_alcool_passif = new ArrayList<AlcoolAbstract>();
-    private ArrayList<AlcoolAbstract> list_alcool_actif = new ArrayList<AlcoolAbstract>();
-    private int nbClick = 0;
-    private int puissanceClick = 1;
+    private double alcoolLevel  = 0;
+    private double clickBonus = 0;
+    private double passiveBonus = 0;
+    private double activeBonus = 0;
+    private ArrayList<AlcoolAbstract> passiveAlcoolList = new ArrayList<AlcoolAbstract>();
+    private ArrayList<AlcoolAbstract> activeAlcoolList = new ArrayList<AlcoolAbstract>();
+    private int clickCount = 0;
+    private int clickPower = 1;
     private int rebirth = 0;
 
 
@@ -34,66 +34,66 @@ public class Player extends Activity implements View.OnClickListener {
     }
 
     private void clickPlayer(){
-        this.tauxAlcoolemie += (puissanceClick+bonusClick)*(rebirth*rebirth);
-        this.nbClick++;
+        this.alcoolLevel  += (clickPower+clickBonus)*(rebirth*rebirth);
+        this.clickCount++;
     }
 
-    private void augmentePuissance(int b){
-        puissanceClick += b;
+    private void powerUpgrade(int b){
+        clickPower += b;
     }
 
-    public void addBonusActif(double b){
-        this.bonusActif += b;
+    public void addActiveBonus(double b){
+        this.activeBonus += b;
     }
 
-    public void addBonusPassif(double b){
-        this.bonusPassif += b;
+    public void addPassiveBonus(double b){
+        this.passiveBonus += b;
     }
 
-    public double calculBonusPassif(){
+    public double calculPassiveBonus(){
         double bonus = 0;
-        for(AlcoolAbstract a: list_alcool_passif){
+        for(AlcoolAbstract a: passiveAlcoolList){
             bonus+=a.getPoints();
         }
         bonus *=Math.pow((rebirth+1),2);
-        bonus *= bonusPassif;
+        bonus *= passiveBonus;
         return bonus;
     }
 
-    public double calculBonusActif(){
+    public double calculActiveBonus(){
         double bonus = 0;
-        for(AlcoolAbstract a: list_alcool_actif){
+        for(AlcoolAbstract a: activeAlcoolList){
             bonus+=a.getPoints();
         }
-        bonus += puissanceClick;
+        bonus += clickPower;
         bonus *=(rebirth*rebirth);
-        bonus *= bonusActif;
+        bonus *= activeBonus;
         return bonus;
     }
 
-    public void decuve(){
-        this.puissanceClick = 1;
-        this.bonusClick = 0;
-        this.bonusPassif = 0;
-        this.tauxAlcoolemie = 0;
+    public void discover(){
+        this.clickPower = 1;
+        this.clickBonus = 0;
+        this.passiveBonus = 0;
+        this.alcoolLevel  = 0;
         this.rebirth++;
     }
 
-    public void addAlcool(AlcoolAbstract a){
-        if(a.type.equals("passif")){
-            list_alcool_passif.add(a);
+    public static void addAlcool(AlcoolAbstract a){
+        if(a.type.equals("passive")){
+            passiveAlcoolList.add(a);
         }
         else{
-            list_alcool_actif.add(a);
+            activeAlcoolList.add(a);
         }
     }
 
-    public int getNbClick(){
-        return this.nbClick;
+    public int getClickCount(){
+        return this.clickCount;
     }
 
-    public double getTauxAlcoolemie(){
-        return this.tauxAlcoolemie;
+    public double getAlcoolLevel (){
+        return this.alcoolLevel ;
     }
 
 }

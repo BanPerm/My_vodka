@@ -4,14 +4,4 @@ public class Rhum extends AlcoolAbstract {
     public Rhum(String nomAlcool, double prix, double multiplicateur, String typeBonus, String specialite) {
         super(nomAlcool, prix, multiplicateur, typeBonus, specialite);
     }
-
-    @Override
-    public void addAlcool() {
-
-    }
-
-    @Override
-    public void clickBouton() {
-
-    }
 }

@@ -1,6 +1,6 @@
 package com.example.my_vodka.boissons;
-
-abstract class AlcoolAbstract {
+import com.example.my_vodka.Player;
+public abstract class AlcoolAbstract {
     protected String alcoolName;
     protected int alcoolCount;
     protected double alcoolPrice;
@@ -17,32 +17,36 @@ abstract class AlcoolAbstract {
         this.alcoolCount = 0;
     }
 
-    public abstract void addAlcool();
+    public void addAlcool(){
+        Player.addAlcool(this);
+        alcoolCount++;
+    }
 
-    public abstract void clickBouton();
+    public void clickButton(){
 
-    // Getters pour les attributs
-    public String getalcoolName() {
+    }
+
+    public String getAlcoolName() {
         return alcoolName;
     }
 
-    public int getalcoolCount() {
+    public int getAlcoolCount() {
         return alcoolCount;
     }
 
-    public double getalcoolPrice() {
+    public double getAlcoolPrice() {
         return alcoolPrice;
     }
 
-    public double getalcoolMultiply() {
+    public double getAlcoolMultiply() {
         return alcoolMultiply;
     }
 
-    public String getbonusType() {
+    public String getBonusType() {
         return bonusType;
     }
 
-    public String getspeciality() {
+    public String getSpeciality() {
         return speciality;
     }
 }
