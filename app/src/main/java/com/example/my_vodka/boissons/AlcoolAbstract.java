@@ -1,20 +1,20 @@
 package com.example.my_vodka.boissons;
 
 abstract class AlcoolAbstract {
-    protected String nomAlcool;
-    protected int compteurAlcool;
-    protected double prix;
-    protected double multiplicateur;
-    protected String typeBonus;
-    protected String specialite;
+    protected String alcoolName;
+    protected int alcoolCount;
+    protected double alcoolPrice;
+    protected double alcoolMultiply;
+    protected String bonusType;
+    protected String speciality;
 
-    public AlcoolAbstract(String nomAlcool, double prix, double multiplicateur, String typeBonus, String specialite) {
-        this.nomAlcool = nomAlcool;
-        this.prix = prix;
-        this.multiplicateur = multiplicateur;
-        this.typeBonus = typeBonus;
-        this.specialite = specialite;
-        this.compteurAlcool = 0;
+    public AlcoolAbstract(String alcoolName, double alcoolPrice, double alcoolMultiply, String bonusType, String speciality) {
+        this.alcoolName = alcoolName;
+        this.alcoolPrice = alcoolPrice;
+        this.alcoolMultiply = alcoolMultiply;
+        this.bonusType = bonusType;
+        this.speciality = speciality;
+        this.alcoolCount = 0;
     }
 
     public abstract void addAlcool();
@@ -22,27 +22,27 @@ abstract class AlcoolAbstract {
     public abstract void clickBouton();
 
     // Getters pour les attributs
-    public String getNomAlcool() {
-        return nomAlcool;
+    public String getalcoolName() {
+        return alcoolName;
     }
 
-    public int getCompteurAlcool() {
-        return compteurAlcool;
+    public int getalcoolCount() {
+        return alcoolCount;
     }
 
-    public double getPrix() {
-        return prix;
+    public double getalcoolPrice() {
+        return alcoolPrice;
     }
 
-    public double getMultiplicateur() {
-        return multiplicateur;
+    public double getalcoolMultiply() {
+        return alcoolMultiply;
     }
 
-    public String getTypeBonus() {
-        return typeBonus;
+    public String getbonusType() {
+        return bonusType;
     }
 
-    public String getSpecialite() {
-        return specialite;
+    public String getspeciality() {
+        return speciality;
     }
 }
