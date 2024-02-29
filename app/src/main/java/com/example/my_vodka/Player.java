@@ -17,8 +17,8 @@ public class Player extends Activity implements View.OnClickListener {
     private double clickBonus = 0;
     private double passiveBonus = 0;
     private double activeBonus = 0;
-    private ArrayList<AlcoolAbstract> passiveAlcoolList = new ArrayList<AlcoolAbstract>();
-    private ArrayList<AlcoolAbstract> activeAlcoolList = new ArrayList<AlcoolAbstract>();
+    private static ArrayList<AlcoolAbstract> passiveAlcoolList = new ArrayList<AlcoolAbstract>();
+    private static ArrayList<AlcoolAbstract> activeAlcoolList = new ArrayList<AlcoolAbstract>();
     private int clickCount = 0;
     private int clickPower = 1;
     private int rebirth = 0;
@@ -77,7 +77,7 @@ public class Player extends Activity implements View.OnClickListener {
     }
 
     public static void addAlcool(AlcoolAbstract a){
-        if(a.type.equals("passive")){
+        if(a.getBonusType().equals("passive")){
             passiveAlcoolList.add(a);
         }
         else{
