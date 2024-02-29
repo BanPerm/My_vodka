@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 
@@ -22,17 +23,21 @@ public class Player extends Activity implements View.OnClickListener {
     private int clickCount = 0;
     private int clickPower = 1;
     private int rebirth = 0;
+    private TextView score;
 
 
     public Player(){
         ImageButton button = (ImageButton) findViewById(R.id.player);
         button.setOnClickListener(this);
+        score = (TextView) findViewById(R.id.score);
+        score.setText(0);
     }
 
     // Implement the OnClickListener callback
     public void onClick(View v) {
         this.alcoolLevel  += (clickPower+clickBonus)*(rebirth*rebirth);
         this.clickCount++;
+        score.setText(String.valueOf(alcoolLevel));
     }
 
     private void powerUpgrade(int b){
@@ -50,7 +55,7 @@ public class Player extends Activity implements View.OnClickListener {
     public double calculPassiveBonus(){
         double bonus = 0;
         for(AlcoolAbstract a: passiveAlcoolList){
-            bonus+=a.getPoints();
+            //bonus+=a.getPoints();
         }
         bonus *=Math.pow((rebirth+1),2);
         bonus *= passiveBonus;
@@ -60,7 +65,7 @@ public class Player extends Activity implements View.OnClickListener {
     public double calculActiveBonus(){
         double bonus = 0;
         for(AlcoolAbstract a: activeAlcoolList){
-            bonus+=a.getPoints();
+            //bonus+=a.getPoints();
         }
         bonus += clickPower;
         bonus *=(rebirth*rebirth);

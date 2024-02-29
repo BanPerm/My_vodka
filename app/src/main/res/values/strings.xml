@@ -3,4 +3,5 @@
     <string name="button_send" />
     <string name="player_button">Player Button</string>
     <string name="de_l_alcool">De l\'alcool</string>
+    <string name="taux_d_alcool_mie">Taux d\'alcoolémie</string>
 </resources>
