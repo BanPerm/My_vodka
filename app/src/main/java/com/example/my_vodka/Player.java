@@ -1,31 +1,37 @@
 package com.example.my_vodka;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.DrawableRes;
 
+import com.example.my_vodka.boissons.AlcoolAbstract;
+
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends Activity implements View.OnClickListener {
     private double tauxAlcoolemie = 0;
     private double bonusClick = 0;
     private double bonusPassif = 0;
     private double bonusActif = 0;
-    private ArrayList<AlcoolInterface> list_alcool_passif = new ArrayList<AlcoolInterface>();
-    private ArrayList<AlcoolInterface> list_alcool_actif = new ArrayList<AlcoolInterface>();
+    private ArrayList<AlcoolAbstract> list_alcool_passif = new ArrayList<AlcoolAbstract>();
+    private ArrayList<AlcoolAbstract> list_alcool_actif = new ArrayList<AlcoolAbstract>();
     private int nbClick = 0;
     private int puissanceClick = 1;
     private int rebirth = 0;
-    Button button = (Button) findViewById(R.id.supabutton);
-    button.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            this.calculBonusActif();
-        }
-    });
 
-    public Player(){}
+
+    public Player(){
+        Button button = (Button)findViewById(R.id.player);
+        button.setOnClickListener(this);
+    }
+
+    // Implement the OnClickListener callback
+    public void onClick(View v) {
+        clickPlayer();
+    }
 
     private void clickPlayer(){
         this.tauxAlcoolemie += (puissanceClick+bonusClick)*(rebirth*rebirth);
@@ -46,7 +52,7 @@ public class Player {
 
     public double calculBonusPassif(){
         double bonus = 0;
-        for(AlcoolInterface a: list_alcool_passif){
+        for(AlcoolAbstract a: list_alcool_passif){
             bonus+=a.getPoints();
         }
         bonus *=Math.pow((rebirth+1),2);
@@ -56,7 +62,7 @@ public class Player {
 
     public double calculBonusActif(){
         double bonus = 0;
-        for(AlcoolInterface a: list_alcool_actif){
+        for(AlcoolAbstract a: list_alcool_actif){
             bonus+=a.getPoints();
         }
         bonus += puissanceClick;
@@ -73,7 +79,7 @@ public class Player {
         this.rebirth++;
     }
 
-    public void addAlcool(AlcoolInterface a){
+    public void addAlcool(AlcoolAbstract a){
         if(a.type.equals("passif")){
             list_alcool_passif.add(a);
         }
