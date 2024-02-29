@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.DrawableRes;
 
@@ -24,16 +25,12 @@ public class Player extends Activity implements View.OnClickListener {
 
 
     public Player(){
-        Button button = (Button)findViewById(R.id.player);
+        ImageButton button = (ImageButton) findViewById(R.id.player);
         button.setOnClickListener(this);
     }
 
     // Implement the OnClickListener callback
     public void onClick(View v) {
-        clickPlayer();
-    }
-
-    private void clickPlayer(){
         this.alcoolLevel  += (clickPower+clickBonus)*(rebirth*rebirth);
         this.clickCount++;
     }

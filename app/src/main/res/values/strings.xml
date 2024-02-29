@@ -2,4 +2,5 @@
     <string name="app_name">My_vodka</string>
     <string name="button_send" />
     <string name="player_button">Player Button</string>
+    <string name="de_l_alcool">De l\'alcool</string>
 </resources>
