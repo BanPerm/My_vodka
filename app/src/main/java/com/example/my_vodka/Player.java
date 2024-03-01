@@ -1,44 +1,44 @@
 package com.example.my_vodka;
 
-import android.app.Activity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
-import androidx.annotation.DrawableRes;
 
 import com.example.my_vodka.boissons.AlcoolAbstract;
 
 import java.util.ArrayList;
 
-public class Player extends Activity implements View.OnClickListener {
-    private double alcoolLevel  = 0;
-    private double clickBonus = 0;
-    private double passiveBonus = 0;
-    private double activeBonus = 0;
-    private static ArrayList<AlcoolAbstract> passiveAlcoolList = new ArrayList<AlcoolAbstract>();
-    private static ArrayList<AlcoolAbstract> activeAlcoolList = new ArrayList<AlcoolAbstract>();
-    private int clickCount = 0;
-    private int clickPower = 1;
+public class Player implements View.OnClickListener {
+    private float alcoolLevel  = 0;
+    private float clickBonus = 0;
+    private float passiveBonus = 0;
+    private float activeBonus = 0;
+    private static ArrayList<AlcoolAbstract> passiveAlcoolList = new ArrayList<>();
+    private static ArrayList<AlcoolAbstract> activeAlcoolList = new ArrayList<>();
+    private float clickCount = 0;
+    private float clickPower = 1;
     private int rebirth = 0;
     private TextView score;
 
-
-    public Player(){
-        ImageButton button = (ImageButton) findViewById(R.id.player);
-        button.setOnClickListener(this);
-        score = (TextView) findViewById(R.id.score);
-        score.setText(0);
-    }
-
-    // Implement the OnClickListener callback
+    @Override
     public void onClick(View v) {
-        this.alcoolLevel  += (clickPower+clickBonus)*(rebirth*rebirth);
+        // Action à effectuer lors du clic sur le bouton
+        this.alcoolLevel += (clickPower + clickBonus) * (rebirth * rebirth);
         this.clickCount++;
-        score.setText(String.valueOf(alcoolLevel));
+        score.setText(String.valueOf(this.clickCount));
     }
+
+    // Méthode pour injecter le TextView pour le score
+    public void setAlcoolLevelScore(float score) {
+        this.alcoolLevel = score;
+    }
+
+    public void setAlcoolClickScore(float score) {
+        this.clickCount = score;
+        if (score > 0 && score != this.clickCount && this.score != null) {
+            this.score.setText(String.valueOf(score));
+        }
+    }
+
 
     private void powerUpgrade(int b){
         clickPower += b;
@@ -52,8 +52,8 @@ public class Player extends Activity implements View.OnClickListener {
         this.passiveBonus += b;
     }
 
-    public double calculPassiveBonus(){
-        double bonus = 0;
+    public float calculPassiveBonus(){
+        float bonus = 0;
         for(AlcoolAbstract a: passiveAlcoolList){
             //bonus+=a.getPoints();
         }
@@ -62,8 +62,8 @@ public class Player extends Activity implements View.OnClickListener {
         return bonus;
     }
 
-    public double calculActiveBonus(){
-        double bonus = 0;
+    public float calculActiveBonus(){
+        float bonus = 0;
         for(AlcoolAbstract a: activeAlcoolList){
             //bonus+=a.getPoints();
         }
@@ -90,12 +90,15 @@ public class Player extends Activity implements View.OnClickListener {
         }
     }
 
-    public int getClickCount(){
+    public float getClickCount(){
         return this.clickCount;
     }
 
-    public double getAlcoolLevel (){
+    public float getAlcoolLevel (){
         return this.alcoolLevel ;
     }
 
+    public void setScoreTextView(TextView score) {
+        this.score=score;
+    }
 }

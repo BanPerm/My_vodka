@@ -1,5 +1,7 @@
 package com.example.my_vodka.boissons;
+
 import com.example.my_vodka.Player;
+
 public abstract class AlcoolAbstract {
     protected String alcoolName;
     protected int alcoolCount;
@@ -8,7 +10,10 @@ public abstract class AlcoolAbstract {
     protected String bonusType;
     protected String speciality;
 
-    public AlcoolAbstract(String alcoolName, double alcoolPrice, double alcoolMultiply, String bonusType, String speciality) {
+    protected String informations;
+
+    public AlcoolAbstract(String informations, String alcoolName, double alcoolPrice, double alcoolMultiply, String bonusType, String speciality) {
+        this.informations = informations;
         this.alcoolName = alcoolName;
         this.alcoolPrice = alcoolPrice;
         this.alcoolMultiply = alcoolMultiply;
@@ -17,13 +22,9 @@ public abstract class AlcoolAbstract {
         this.alcoolCount = 0;
     }
 
-    public void addAlcool(){
+    public void addAlcool() {
         Player.addAlcool(this);
         alcoolCount++;
-    }
-
-    public void clickButton(){
-
     }
 
     public String getAlcoolName() {
@@ -48,5 +49,9 @@ public abstract class AlcoolAbstract {
 
     public String getSpeciality() {
         return speciality;
+    }
+
+    public String getInformations() {
+        return informations;
     }
 }

@@ -1,7 +1,7 @@
 package com.example.my_vodka.boissons;
 
 public class Cidre extends AlcoolAbstract {
-    public Cidre(String nomAlcool, double prix, double multiplicateur, String typeBonus, String specialite) {
-        super(nomAlcool, prix, multiplicateur, typeBonus, specialite);
+    public Cidre(String informations, String nomAlcool, double prix, double multiplicateur, String typeBonus, String specialite) {
+        super(informations, nomAlcool, prix, multiplicateur, typeBonus, specialite);
     }
 }
