@@ -7,12 +7,11 @@ public abstract class AlcoolAbstract {
     protected int alcoolCount;
     protected double alcoolPrice;
     protected double alcoolMultiply;
-    protected String bonusType;
+    protected boolean bonusType;
     protected String speciality;
-
     protected String informations;
 
-    public AlcoolAbstract(String informations, String alcoolName, double alcoolPrice, double alcoolMultiply, String bonusType, String speciality) {
+    public AlcoolAbstract(String informations, String alcoolName, double alcoolPrice, double alcoolMultiply, boolean bonusType, String speciality) {
         this.informations = informations;
         this.alcoolName = alcoolName;
         this.alcoolPrice = alcoolPrice;
@@ -43,7 +42,7 @@ public abstract class AlcoolAbstract {
         return alcoolMultiply;
     }
 
-    public String getBonusType() {
+    public boolean getBonusType() {
         return bonusType;
     }
 

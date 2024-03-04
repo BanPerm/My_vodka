@@ -19,12 +19,32 @@ public class Player implements View.OnClickListener {
     private int rebirth = 0;
     private TextView score;
 
-    @Override
-    public void onClick(View v) {
-        // Action à effectuer lors du clic sur le bouton
+    public void onPlayerButtonClick() {
         this.alcoolLevel += (clickPower + clickBonus) * (rebirth * rebirth);
         this.clickCount++;
-        score.setText(String.valueOf(this.clickCount));
+        updateScore();
+    }
+
+    public void onMarketButtonClick(View view) {
+    }
+
+    // Méthode pour mettre à jour le score affiché
+    private void updateScore() {
+        if (score != null) {
+            score.setText(String.valueOf(this.clickCount));
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        // Gérer les clics sur différents boutons
+        if (v.getId() == R.id.player) {
+            onPlayerButtonClick();
+        } else if (v.getId() == R.id.marketButton) {
+            onMarketButtonClick();
+        } else if (v.getId() == R.id.quitButton) {
+            onQuitButtonClick();
+        }
     }
 
     // Méthode pour injecter le TextView pour le score
@@ -38,7 +58,6 @@ public class Player implements View.OnClickListener {
             this.score.setText(String.valueOf(score));
         }
     }
-
 
     private void powerUpgrade(int b){
         clickPower += b;
@@ -82,7 +101,7 @@ public class Player implements View.OnClickListener {
     }
 
     public static void addAlcool(AlcoolAbstract a){
-        if(a.getBonusType().equals("passive")){
+        if(!a.getBonusType()){
             passiveAlcoolList.add(a);
         }
         else{

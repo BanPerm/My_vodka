@@ -1,18 +1,16 @@
 package com.example.my_vodka.boissons;
 
 public class Biere extends AlcoolAbstract {
-    public Biere(String informations, String nomAlcool, double prix, double multiplicateur, String typeBonus, String specialite) {
-        super(informations, nomAlcool, prix, multiplicateur, typeBonus, specialite);
+    public Biere() {
+        super(informations, alcoolName, alcoolPrice, alcoolMultiply, bonusType, speciality);
     }
 
     // Biere
-    private final String alcoolName = "Biere";
-    private final String informations = "Parfait pour discuter philosophie ou regarder le foot.";
-    private final float alcoolPrice = 5;
-    private final float alcoolMultiply = 1.2f;
-    private final float bonusType = 2.0f;
-    private final String speciality = "Améliore les compétences en chant de karaoké";
-
-
+    private static final String alcoolName = "Biere";
+    private static final String informations = "Une, deux, trois, TORNADOOOOO ! Parfait pour discuter philosophie ou regarder le foot.";
+    private static final float alcoolPrice = 5;
+    private static final float alcoolMultiply = 1.2f;
+    private static final boolean bonusType = false;
+    private static final String speciality = "";
 
 }

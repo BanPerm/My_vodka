@@ -1,5 +1,6 @@
 package com.example.my_vodka;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -43,14 +44,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PlayerDataHandler.getPrefsName(), Context.MODE_PRIVATE);
         Log.d("PlayerDataHandler", "Loading player data: Alcool Level = " + prefs.getFloat(PlayerDataHandler.getKeyAlcoolLevel(), 0) + ", Click Count = " + prefs.getFloat(PlayerDataHandler.getKeyClickCount(), 0));
 
-        ImageButton button = findViewById(R.id.player);
+        ImageButton scoreButton = findViewById(R.id.player);
+        ImageButton marketButton = findViewById(R.id.marketButton);
+        ImageButton quitButton = findViewById(R.id.quitButton);
+
         TextView score = findViewById(R.id.score);
 
         // Mettez à jour le score avec la valeur correcte
         score.setText(String.valueOf(player.getClickCount()));
 
         // Injectez la dépendance Player dans l'écouteur de clic
-        button.setOnClickListener(player);
+        scoreButton.setOnClickListener(player);
+        marketButton.setOnClickListener(player);
+        quitButton.setOnClickListener(player);
         player.setScoreTextView(score);
     }
 

@@ -1,15 +1,17 @@
 package com.example.my_vodka.boissons;
 
 public class VinRouge extends VinInterface {
-    public VinRouge(String informations, String nomAlcool, double prix, double multiplicateur, String typeBonus, String specialite) {
-        super(informations, nomAlcool, prix, multiplicateur, typeBonus, specialite);
+    public VinRouge() {
+        super(informations, alcoolName, alcoolPrice, alcoolMultiply, bonusType, speciality);
     }
     // VinRouge
-    private final String alcoolName = "VinRouge";
-    private final String informations = "Fait croire que vous avez un palais raffiné.";
-    private final float alcoolPrice = 11;
-    private final float alcoolMultiply = 1.3f;
-    private final float bonusType = 2.2f;
-    private final String speciality = "Accroît la passion";
+    private static final String alcoolName = "VinRouge";
+    private static final String informations = "Fait croire que vous avez un palais raffiné.";
+    private static final float alcoolPrice = 11;
+    private static final float alcoolMultiply = 1.3f;
+    private static final boolean bonusType = false;
+    private static final String speciality = "";
+
+
 }
 
