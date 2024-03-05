@@ -62,11 +62,11 @@ public class Player implements View.OnClickListener {
         clickPower += b;
     }
 
-    public void addActiveBonus(double b){
+    public void addActiveBonus(float b){
         this.activeBonus += b;
     }
 
-    public void addPassiveBonus(double b){
+    public void addPassiveBonus(float b){
         this.passiveBonus += b;
     }
 
@@ -75,7 +75,7 @@ public class Player implements View.OnClickListener {
         for(AlcoolAbstract a: passiveAlcoolList){
             //bonus+=a.getPoints();
         }
-        bonus *=Math.pow((rebirth+1),2);
+        bonus *= (float) Math.pow((rebirth+1),2);
         bonus *= passiveBonus;
         return bonus;
     }

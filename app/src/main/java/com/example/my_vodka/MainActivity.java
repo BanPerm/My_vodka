@@ -6,7 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Player player;
     private PlayerDataHandler playerDataHandler;
+    private boolean isMenuOpen = false;
+    private ImageView arrowButton;
+    private LinearLayout menuLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         marketButton.setOnClickListener(player);
         quitButton.setOnClickListener(player);
         player.setScoreTextView(score);
+
+        //Création menu toggle
+        arrowButton = findViewById(R.id.arrowButton);
+        menuLayout = findViewById(R.id.menuLayout);
     }
 
     @Override
@@ -95,5 +106,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    public void toggleMenu(View view) {
+        if (isMenuOpen) {
+            Log.i("test","clicked open");
+            menuLayout.setVisibility(View.GONE);
+            arrowButton.setImageResource(R.drawable.arrowtest);
+        } else {
+            Log.i("test","clicked closed");
+            menuLayout.setVisibility(View.VISIBLE);
+            arrowButton.setImageResource(R.drawable.arrowtest);
+        }
+        isMenuOpen = !isMenuOpen;
+    }
+
+    private void openMenu() {
+        menuLayout.setVisibility(View.VISIBLE);
+        arrowButton.setImageResource(R.drawable.arrowtest);
+    }
+
+    private void closeMenu() {
+        menuLayout.setVisibility(View.GONE);
+        arrowButton.setImageResource(R.drawable.arrowtest);
+    }
 }
 

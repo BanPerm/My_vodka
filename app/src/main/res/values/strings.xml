@@ -4,4 +4,7 @@
     <string name="player_button">Player Button</string>
     <string name="de_l_alcool">De l\'alcool</string>
     <string name="taux_d_alcool_mie">Taux d\'alcoolémie</string>
+    <string name="togglemenu">toggleMenu</string>
+    <string name="menu_item_2">Menu Item 2</string>
+    <string name="menu_item_1">Menu Item 1</string>
 </resources>
