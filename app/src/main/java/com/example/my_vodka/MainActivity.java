@@ -23,7 +23,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Player player;
     private PlayerDataHandler playerDataHandler;
@@ -50,10 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView score = findViewById(R.id.score);
 
-        // Mettez à jour le score avec la valeur correcte
         score.setText(String.valueOf(player.getClickCount()));
 
-        // Injectez la dépendance Player dans l'écouteur de clic
         scoreButton.setOnClickListener(player);
         marketButton.setOnClickListener(player);
         quitButton.setOnClickListener(player);
@@ -76,6 +74,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         playerDataHandler.savePlayerData(player);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.player:
+                player.onPlayerButtonClick();
+                Log.d("MainActivity", "Market button clicked. Starting MarketActivity...");
+
+                break;
+            case R.id.marketButton:
+                Log.d("MainActivity", "Market button clicked. Starting MarketActivity...");
+                startActivity(MarketActivity.createIntent(this));
+                break;
+            case R.id.quitButton:
+                // Faire quelque chose lorsque le bouton "quit" est cliqué
+                break;
+        }
     }
 
 

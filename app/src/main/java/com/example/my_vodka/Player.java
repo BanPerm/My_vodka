@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Player implements View.OnClickListener {
     private float alcoolLevel  = 0;
     private float clickBonus = 0;
-    private float passiveBonus = 0;
-    private float activeBonus = 0;
+    private float passiveBonus = 1;
+    private float activeBonus = 1;
     private static ArrayList<AlcoolAbstract> passiveAlcoolList = new ArrayList<>();
     private static ArrayList<AlcoolAbstract> activeAlcoolList = new ArrayList<>();
     private float clickCount = 0;
@@ -19,16 +19,6 @@ public class Player implements View.OnClickListener {
     private int rebirth = 0;
     private TextView score;
 
-    public void onPlayerButtonClick() {
-        this.alcoolLevel += (clickPower + clickBonus) * (rebirth * rebirth);
-        this.clickCount++;
-        updateScore();
-    }
-
-    public void onMarketButtonClick(View view) {
-    }
-
-    // Méthode pour mettre à jour le score affiché
     private void updateScore() {
         if (score != null) {
             score.setText(String.valueOf(this.clickCount));
@@ -37,14 +27,23 @@ public class Player implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // Gérer les clics sur différents boutons
-        if (v.getId() == R.id.player) {
-            onPlayerButtonClick();
-        } else if (v.getId() == R.id.marketButton) {
-            onMarketButtonClick();
-        } else if (v.getId() == R.id.quitButton) {
-            onQuitButtonClick();
+        switch (v.getId()) {
+            case R.id.player:
+                onPlayerButtonClick();
+                break;
+            case R.id.marketButton:
+                // Ne rien faire ici, géré par MainActivity
+                break;
+            case R.id.quitButton:
+                // Ne rien faire ici, géré par MainActivity
+                break;
         }
+    }
+
+    public void onPlayerButtonClick() {
+        alcoolLevel += (clickPower + clickBonus) * (rebirth * rebirth);
+        clickCount++;
+        updateScore();
     }
 
     // Méthode pour injecter le TextView pour le score
