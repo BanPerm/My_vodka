@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/settings_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <CheckBoxPreference
         android:key="sound_preference"
@@ -7,4 +13,12 @@
         android:summary="Activer ou désactiver les effets sonores"
         android:defaultValue="true" />
 
+    <!-- Bouton pour l'option Son -->
+    <CheckBoxPreference
+        android:id="@+id/music_preference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Son"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true" />
 </PreferenceScreen>
