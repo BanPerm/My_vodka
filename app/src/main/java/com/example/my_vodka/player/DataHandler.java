@@ -1,4 +1,4 @@
-package com.example.my_vodka;
+package com.example.my_vodka.player;
 
 public interface DataHandler {
     void savePlayerData(Player player);
