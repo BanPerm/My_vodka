@@ -1,23 +1,20 @@
 package com.example.my_vodka.upgrade;
-import com.example.my_vodka.Player;
 
 public abstract class UpgradeAbstract {
     protected String alcoolName;
     protected int alcoolCount;
     protected double alcoolPrice;
     protected double alcoolMultiply;
-    protected float passiveBonus;
-    protected float activeBonus;
+    protected boolean bonusType;
     protected String speciality;
     protected String informations;
 
-    public UpgradeAbstract(String informations, String alcoolName, double alcoolPrice, double alcoolMultiply, float activeBonus, float passiveBonus, String speciality) {
+    public UpgradeAbstract(String informations, String upgradeName, double upgradePrice, double uprgradeMultiply, boolean bonusType, String speciality) {
         this.informations = informations;
-        this.alcoolName = alcoolName;
-        this.alcoolPrice = alcoolPrice;
-        this.alcoolMultiply = alcoolMultiply;
-        this.passiveBonus = passiveBonus;
-        this.activeBonus = activeBonus;
+        this.alcoolName = upgradeName;
+        this.alcoolPrice = upgradePrice;
+        this.alcoolMultiply = uprgradeMultiply;
+        this.bonusType = bonusType;
         this.speciality = speciality;
         this.alcoolCount = 0;
     }
@@ -34,23 +31,19 @@ public abstract class UpgradeAbstract {
         return alcoolPrice;
     }
 
-    public double getAlcoolMultiply() {
+    public double getUpgradeMultiply() {
         return alcoolMultiply;
     }
 
-    public float getPassiveBonus() {
-        return passiveBonus;
+    public boolean getUpgradeBonusType() {
+        return bonusType;
     }
 
-    public float getActiveBonus() {
-        return activeBonus;
-    }
-
-    public String getSpeciality() {
+    public String getUpgradeSpeciality() {
         return speciality;
     }
 
-    public String getInformations() {
+    public String getUpgradeInformations() {
         return informations;
     }
 }

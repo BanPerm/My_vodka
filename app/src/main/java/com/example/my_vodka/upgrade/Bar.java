@@ -2,7 +2,14 @@ package com.example.my_vodka.upgrade;
 
 public class Bar extends UpgradeAbstract{
 
-    public Bar(String informations, String alcoolName, double alcoolPrice, double alcoolMultiply, float activeBonus, float passiveBonus, String speciality) {
-        super(informations, alcoolName, alcoolPrice, alcoolMultiply, activeBonus, passiveBonus, speciality);
+    public Bar() {
+        super(informations, upgradeName, upgradePrice, uprgradeMultiply, bonusType, speciality);
     }
+    // Biere
+    private static final String upgradeName = "Biere";
+    private static final String informations = "Monsieur, Euhhh... je vais vous prendre... Euuuuh... le Bar s'il vous plait.";
+    private static final float upgradePrice = 5;
+    private static final float uprgradeMultiply = 1.2f;
+    private static final boolean bonusType = false;
+    private static final String speciality = "";
 }

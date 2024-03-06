@@ -1,8 +1,9 @@
-package com.example.my_vodka;
+package com.example.my_vodka.player;
 
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.my_vodka.R;
 import com.example.my_vodka.boissons.AlcoolAbstract;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.my_vodka;
+package com.example.my_vodka.player;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -7,7 +7,7 @@ public class Cocoroco extends AlcoolAbstract {
 
     // Cocoroco
     private static final String alcoolName = "Cocoroco";
-    private static final String informations = "Si fort qu'il pourrait faire démarrer un camion.";
+    private static final String informations = "Si fort qu'il pourrait faire démarrer un porte-conteneur.";
     private static final float alcoolPrice = 25;
     private static final float alcoolMultiply = 4.0f;
     private static final boolean bonusType = true;

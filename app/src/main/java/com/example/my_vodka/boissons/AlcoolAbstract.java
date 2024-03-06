@@ -1,6 +1,6 @@
 package com.example.my_vodka.boissons;
 
-import com.example.my_vodka.Player;
+import com.example.my_vodka.player.Player;
 
 public abstract class AlcoolAbstract {
     protected String alcoolName;
