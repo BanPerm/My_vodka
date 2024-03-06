@@ -16,7 +16,23 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.my_vodka.boissons.Absinthe;
 import com.example.my_vodka.boissons.AlcoolAbstract;
+import com.example.my_vodka.boissons.Biere;
+import com.example.my_vodka.boissons.Cidre;
+import com.example.my_vodka.boissons.Cocoroco;
+import com.example.my_vodka.boissons.Cognac;
+import com.example.my_vodka.boissons.EauDeVie;
+import com.example.my_vodka.boissons.Panache;
+import com.example.my_vodka.boissons.Pastis;
+import com.example.my_vodka.boissons.Rhum;
+import com.example.my_vodka.boissons.Sake;
+import com.example.my_vodka.boissons.Tequila;
+import com.example.my_vodka.boissons.VinBlanc;
+import com.example.my_vodka.boissons.VinRose;
+import com.example.my_vodka.boissons.VinRouge;
+import com.example.my_vodka.boissons.Vodka;
+import com.example.my_vodka.boissons.Whisky;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isMenuOpen = true;
     private ImageView arrowButton;
     private ScrollView menuLayout;
+    private ArrayList<AlcoolAbstract> list_alcohol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,30 +123,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void createListAlcohol(){
+        list_alcohol.add(new Biere());//5
+        list_alcohol.add(new Panache());//6
+        list_alcohol.add(new Cidre());//7
+        list_alcohol.add(new Vodka());//8
+        list_alcohol.add(new VinRose());//9
+        list_alcohol.add(new Pastis());//10
+        list_alcohol.add(new VinBlanc());//10
+        list_alcohol.add(new VinRouge());//11
+        list_alcohol.add(new Rhum());//12
+        list_alcohol.add(new EauDeVie());//15
+        list_alcohol.add(new Tequila());//15
+        list_alcohol.add(new Sake());//18
+        list_alcohol.add(new Absinthe());//20
+        list_alcohol.add(new Cocoroco());//25
+        list_alcohol.add(new Whisky());//25
+        list_alcohol.add(new Cognac());//30
+    }
+
+
+    private void afficherAlcohol(){
+        for(AlcoolAbstract a:list_alcohol){
+
+        }
+    }
+
 
     public void toggleMenu(View view) {
         if (isMenuOpen) {
-            Log.i("test","clicked open");
-            menuLayout.setVisibility(View.GONE);
-            arrowButton.setRotation(0);
-            arrowButton.setTranslationY(150*view.getResources().getDisplayMetrics().density);
+            closeMenu(view);
         } else {
-            Log.i("test","clicked closed");
-            menuLayout.setVisibility(View.VISIBLE);
-            arrowButton.setRotation(180);
-            arrowButton.setTranslationY(0);
+            openMenu(view);
         }
         isMenuOpen = !isMenuOpen;
     }
 
-    private void openMenu() {
+    private void openMenu(View view) {
         menuLayout.setVisibility(View.VISIBLE);
-        arrowButton.setImageResource(R.drawable.arrowtest);
+        arrowButton.setRotation(180);
+        arrowButton.setTranslationY(0);
     }
 
-    private void closeMenu() {
+    private void closeMenu(View view) {
         menuLayout.setVisibility(View.GONE);
-        arrowButton.setImageResource(R.drawable.arrowtest);
+        arrowButton.setRotation(0);
+        arrowButton.setTranslationY(150*view.getResources().getDisplayMetrics().density);
     }
 }
 
