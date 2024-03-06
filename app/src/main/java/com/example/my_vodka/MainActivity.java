@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +20,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Player player;
     private PlayerDataHandler playerDataHandler;
-    private boolean isMenuOpen = false;
+    private boolean isMenuOpen = true;
     private ImageView arrowButton;
-    private LinearLayout menuLayout;
+    private ScrollView menuLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Création menu toggle
         arrowButton = findViewById(R.id.arrowButton);
-        menuLayout = findViewById(R.id.menuLayout);
+        menuLayout = findViewById(R.id.menuScrollView);
     }
 
     @Override
@@ -98,11 +99,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isMenuOpen) {
             Log.i("test","clicked open");
             menuLayout.setVisibility(View.GONE);
-            arrowButton.setImageResource(R.drawable.arrowtest);
+            arrowButton.setRotation(0);
+            arrowButton.setTranslationY(150*view.getResources().getDisplayMetrics().density);
         } else {
             Log.i("test","clicked closed");
             menuLayout.setVisibility(View.VISIBLE);
-            arrowButton.setImageResource(R.drawable.arrowtest);
+            arrowButton.setRotation(180);
+            arrowButton.setTranslationY(0);
         }
         isMenuOpen = !isMenuOpen;
     }
