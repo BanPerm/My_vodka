@@ -1,6 +1,7 @@
 package com.example.my_vodka;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -115,18 +116,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.player:
                 player.onPlayerButtonClick();
-                Log.d("MainActivity", "Market button clicked. Starting MarketActivity...");
-
+                Log.d("MainActivity", "Player button clicked.");
                 break;
             case R.id.marketButton:
                 Log.d("MainActivity", "Market button clicked. Starting MarketActivity...");
-                startActivity(MarketActivity.createIntent(this));
+                Intent marketIntent = MarketActivity.createIntent(this);
+                startActivity(marketIntent);
                 break;
             case R.id.quitButton:
                 // Faire quelque chose lorsque le bouton "quit" est cliqué
                 break;
         }
     }
+
 
     private void createListAlcohol(){
         list_alcohol.add(new Biere());//5

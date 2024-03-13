@@ -3,6 +3,7 @@ package com.example.my_vodka;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import com.example.my_vodka.boissons.*;
 import java.util.ArrayList;
 
 public class MarketActivity extends AppCompatActivity {
+
+    private static final String TAG = "MarketActivity";
 
     private ArrayList<AlcoolAbstract> alcoolList = new ArrayList<>();
     private Spinner alcoolSpinner;
@@ -25,12 +28,16 @@ public class MarketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
+        Log.d(TAG, "onCreate: Activity created");
+
         alcoolSpinner = findViewById(R.id.alcool_spinner);
         initializeData();
         updateUI();
     }
 
     private void initializeData() {
+        Log.d(TAG, "initializeData: Initializing data");
+
         alcoolList.add(new Absinthe());
         alcoolList.add(new Biere());
         alcoolList.add(new Cidre());
@@ -50,6 +57,8 @@ public class MarketActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
+        Log.d(TAG, "updateUI: Updating UI");
+
         ArrayAdapter<AlcoolAbstract> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, alcoolList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         alcoolSpinner.setAdapter(adapter);

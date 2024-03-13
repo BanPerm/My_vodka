@@ -12,6 +12,6 @@ public class Panache extends AlcoolAbstract {
     private static final float alcoolPrice = 6;
     private static final float alcoolMultiply = 1.0f;
     private static final boolean bonusType = false;
-    private static final String speciality = "";
+    private static final String speciality = "+1cps par Panache acheté";
 
 }

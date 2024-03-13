@@ -10,4 +10,10 @@
     <string name="test">test</string>
     <string name="hello">hello</string>
     <string name="example_text">Example Text</string>
+    <string name="sound_preference">Son</string>
+    <string name="music_preference">Musique</string>
+    <string name="notifications_preference">Notifications</string>
+    <string name="social_network_preference">Réseau social</string>
+    <string name="reset_progress_preference">Réinitialiser le progrès</string>
+    <string name="advanced_settings_preference">Paramètres avancés</string>
 </resources>
