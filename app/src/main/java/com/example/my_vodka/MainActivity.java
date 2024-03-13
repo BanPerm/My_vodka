@@ -4,12 +4,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isMenuOpen = true;
     private ImageView arrowButton;
     private ScrollView menuLayout;
-    private ArrayList<AlcoolAbstract> list_alcohol;
+    private ArrayList<AlcoolAbstract> list_alcohol = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Création menu toggle
         arrowButton = findViewById(R.id.arrowButton);
         menuLayout = findViewById(R.id.menuScrollView);
+        createListAlcohol();
+        afficherAlcohol();
     }
 
     @Override
@@ -142,12 +148,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private void afficherAlcohol(){
-        for(AlcoolAbstract a:list_alcohol){
+    private void afficherAlcohol() {
+        LinearLayout menu = findViewById(R.id.menuLayout);
+        LayoutInflater inflater = LayoutInflater.from(this);
 
+        for (AlcoolAbstract a: list_alcohol) {
+            View itemView = inflater.inflate(R.layout.item_buymenu, menu, false);
+            ImageView imageView = itemView.findViewById(R.id.imageView);
+            TextView text = itemView.findViewById(R.id.textView);
+            Button button = itemView.findViewById(R.id.button);
+            text.setText(""+a.getAlcoolName());
+            button.setText(""+a.getAlcoolPrice());
+
+            // Création des paramètres de layout pour l'élément à ajouter
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            // Appliquer la marge en bas à l'élément
+            params.setMargins(0, 0, 0, 50);
+            itemView.setLayoutParams(params);
+
+            menu.addView(itemView);
         }
     }
-
 
     public void toggleMenu(View view) {
         if (isMenuOpen) {
