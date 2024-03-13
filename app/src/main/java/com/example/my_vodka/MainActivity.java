@@ -42,8 +42,11 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 import com.example.my_vodka.player.Player;
 import com.example.my_vodka.player.PlayerDataHandler;
 
@@ -160,15 +163,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             text.setText(""+a.getAlcoolName());
             button.setText(""+a.getAlcoolPrice());
 
-            // Création des paramètres de layout pour l'élément à ajouter
+
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-
-            // Appliquer la marge en bas à l'élément
             params.setMargins(0, 0, 0, 50);
             itemView.setLayoutParams(params);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    double newPrice = a.setNewPriceAfterBuy();
+
+                    String formattedPrice;
+                    if (Math.abs(newPrice) >= 1.0e10 || Math.abs(newPrice) < 0.01) {
+                        formattedPrice = String.format(Locale.US, "%.2e", newPrice);
+                    } else {
+                        formattedPrice = String.format(Locale.US, "%.2f", newPrice);
+                    }
+                    button.setText(formattedPrice);
+                    //Calcul bonus player
+                }
+            });
 
             menu.addView(itemView);
         }
@@ -192,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void closeMenu(View view) {
         menuLayout.setVisibility(View.GONE);
         arrowButton.setRotation(0);
-        arrowButton.setTranslationY(150*view.getResources().getDisplayMetrics().density);
+        arrowButton.setTranslationY(250*view.getResources().getDisplayMetrics().density);
     }
 }
 

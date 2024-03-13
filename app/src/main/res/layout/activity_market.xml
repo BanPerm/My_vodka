@@ -27,6 +27,36 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informations" />
+
+            <TextView
+                android:id="@+id/alcoolPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price" />
+
+            <TextView
+                android:id="@+id/alcoolMultiply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Multiply" />
+
+            <TextView
+                android:id="@+id/bonusType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bonus Type" />
+
+            <TextView
+                android:id="@+id/speciality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Speciality" />
+
         </LinearLayout>
     </LinearLayout>
 

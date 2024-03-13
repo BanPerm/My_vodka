@@ -42,7 +42,7 @@ public class Player implements View.OnClickListener {
     }
 
     public void onPlayerButtonClick() {
-        alcoolLevel += (clickPower + clickBonus) * (rebirth * rebirth);
+        alcoolLevel += (clickPower + clickBonus) * (rebirth * rebirth)+activeBonus;
         clickCount++;
         updateScore();
     }
@@ -71,25 +71,25 @@ public class Player implements View.OnClickListener {
         this.passiveBonus += b;
     }
 
-    public float calculPassiveBonus(){
+    public void calculPassiveBonus(){
         float bonus = 0;
         for(AlcoolAbstract a: passiveAlcoolList){
-            //bonus+=a.getPoints();
+            bonus+=a.getAlcoolCount();
         }
         bonus *= (float) Math.pow((rebirth+1),2);
         bonus *= passiveBonus;
-        return bonus;
+        passiveBonus = bonus;
     }
 
-    public float calculActiveBonus(){
+    public void calculActiveBonus(){
         float bonus = 0;
         for(AlcoolAbstract a: activeAlcoolList){
-            //bonus+=a.getPoints();
+            bonus+=a.getAlcoolCount();
         }
         bonus += clickPower;
         bonus *=(rebirth*rebirth);
         bonus *= activeBonus;
-        return bonus;
+        activeBonus= bonus;
     }
 
     public void discover(){
