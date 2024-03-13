@@ -53,4 +53,8 @@ public abstract class AlcoolAbstract {
     public String getInformations() {
         return informations;
     }
+
+    public double setNewPriceAfterBuy(){
+        return this.alcoolPrice = this.alcoolPrice * this.alcoolMultiply;
+    }
 }
