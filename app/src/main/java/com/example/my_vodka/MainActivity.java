@@ -77,16 +77,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("PlayerDataHandler", "Loading player data: Alcool Level = " + prefs.getFloat(PlayerDataHandler.getKeyAlcoolLevel(), 0) + ", Click Count = " + prefs.getFloat(PlayerDataHandler.getKeyClickCount(), 0));
 
         ImageButton scoreButton = findViewById(R.id.player);
-        ImageButton marketButton = findViewById(R.id.marketButton);
-        ImageButton quitButton = findViewById(R.id.quitButton);
+        Button marketButton = findViewById(R.id.marketButton);
+        Button preferences = findViewById(R.id.preferences);
+        Button quitButton = findViewById(R.id.quitButton);
 
         TextView score = findViewById(R.id.score);
 
         score.setText(String.valueOf(player.getClickCount()));
 
-        scoreButton.setOnClickListener(player);
-        marketButton.setOnClickListener(player);
-        quitButton.setOnClickListener(player);
+        scoreButton.setOnClickListener(this);
+        marketButton.setOnClickListener(this);
+        preferences.setOnClickListener(this);
+        quitButton.setOnClickListener(this);
         player.setScoreTextView(score);
 
         //Création menu toggle
@@ -126,8 +128,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent marketIntent = MarketActivity.createIntent(this);
                 startActivity(marketIntent);
                 break;
+            case R.id.preferences:
+                Intent preferences = OptionsActivity.createIntent(this);
+                startActivity(preferences);
+                break;
             case R.id.quitButton:
-                // Faire quelque chose lorsque le bouton "quit" est cliqué
+                onDestroy();
                 break;
         }
     }

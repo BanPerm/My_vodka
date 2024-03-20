@@ -22,7 +22,4 @@
         android:layout_height="60dp"
         android:id="@+id/button"
         android:text="@string/hello"/>
-
-
-
 </LinearLayout>
