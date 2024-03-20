@@ -17,15 +17,14 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Conteneur pour les préférences -->
+    <!-- CheckBox placées à gauche du titre Options -->
     <LinearLayout
-        android:id="@+id/preferences_container"
-        android:layout_width="match_parent"
+        android:id="@+id/checkbox_container"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        android:gravity="start">
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:orientation="vertical">
 
         <CheckBox
             android:id="@+id/sound_preference"
@@ -43,10 +42,20 @@
 
         <CheckBox
             android:id="@+id/notifications_preference"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/notifications_preference"
             android:text="Notifications" />
+
+    </LinearLayout>
+
+    <!-- Boutons au milieu de la page -->
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/advanced_settings_preference"
@@ -62,10 +71,16 @@
             android:contentDescription="@string/social_network_preference"
             android:text="Social" />
 
+        <Button
+            android:id="@+id/reset_progress_preference"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/reset_progress_preference"
+            android:text="Reset" />
+
     </LinearLayout>
 
     <!-- Logo centré en bas -->
-
     <ImageView
         android:id="@+id/logoImageView"
         android:layout_width="140dp"
@@ -74,13 +89,6 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/bouteille_1l_fruit_bio" />
 
-    <Button
-        android:id="@+id/reset_progress_preference"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="60dp"
-        android:contentDescription="@string/reset_progress_preference"
-        android:text="Reset" />
+    <!-- Bouton Reset centré en bas -->
 
 </FrameLayout>
