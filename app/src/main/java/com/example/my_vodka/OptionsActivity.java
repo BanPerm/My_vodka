@@ -35,10 +35,20 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
         Button soundButton = findViewById(R.id.sound_preference);
         Button musicButton = findViewById(R.id.music_preference);
         Button notificationsButton = findViewById(R.id.notifications_preference);
+        Button advancedButton = findViewById(R.id.advanced_settings_preference);
+        Button socialButton = findViewById(R.id.social_network_preference);
+        Button returnButton = findViewById(R.id.return_preference);
+        Button resetButton = findViewById(R.id.reset_progress_preference);
+
 
         soundButton.setOnClickListener(this);
         musicButton.setOnClickListener(this);
         notificationsButton.setOnClickListener(this);
+        advancedButton.setOnClickListener(this);
+        socialButton.setOnClickListener(this);
+        returnButton.setOnClickListener(this);
+        resetButton.setOnClickListener(this);
+
 
         // Charger les préférences
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -65,6 +75,10 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.notifications_preference:
                 notificationsEnabled = !notificationsEnabled;
                 updatePreference(NOTIFICATIONS_PREF_KEY, notificationsEnabled);
+                break;
+            case R.id.return_preference:
+                Intent mainActivity = new Intent(this, MainActivity.class);
+                startActivity(mainActivity);
                 break;
 
                 /* TODO
