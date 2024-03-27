@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.my_vodka.boissons.Absinthe;
 import com.example.my_vodka.boissons.AlcoolAbstract;
@@ -56,8 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Player player;
     private PlayerDataHandler playerDataHandler;
     private boolean isMenuOpen = true;
+    private TextView score;
     private ImageView arrowButton;
-    private ScrollView menuLayout;
+    private ConstraintLayout menuLayout;
     private ArrayList<AlcoolAbstract> list_alcohol = new ArrayList<>();
 
     @Override
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button preferences = findViewById(R.id.preferences);
         Button quitButton = findViewById(R.id.quitButton);
 
-        TextView score = findViewById(R.id.score);
+        score = findViewById(R.id.score);
 
         score.setText(String.valueOf(player.getClickCount()));
 
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Création menu toggle
         arrowButton = findViewById(R.id.arrowButton);
-        menuLayout = findViewById(R.id.menuScrollView);
+        menuLayout = findViewById(R.id.menu);
         createListAlcohol();
         afficherAlcohol();
     }
@@ -182,16 +184,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    double newPrice = a.setNewPriceAfterBuy();
+                    if (player.getAlcoolLevel()>a.getAlcoolPrice()){
+                        player.setAlcoolLevelScore((float) (player.getAlcoolLevel()-a.getAlcoolPrice()));
+                        score.setText(""+player.getAlcoolLevel());
+                        double newPrice = a.setNewPriceAfterBuy();
 
-                    String formattedPrice;
-                    if (Math.abs(newPrice) >= 1.0e10 || Math.abs(newPrice) < 0.01) {
-                        formattedPrice = String.format(Locale.US, "%.2e", newPrice);
-                    } else {
-                        formattedPrice = String.format(Locale.US, "%.2f", newPrice);
+                        String formattedPrice;
+                        if (Math.abs(newPrice) >= 1.0e10 || Math.abs(newPrice) < 0.01) {
+                            formattedPrice = String.format(Locale.US, "%.2e", newPrice);
+                        } else {
+                            formattedPrice = String.format(Locale.US, "%.2f", newPrice);
+                        }
+                        button.setText(formattedPrice);
+                        //Calcul bonus player
                     }
-                    button.setText(formattedPrice);
-                    //Calcul bonus player
+
                 }
             });
 
@@ -209,15 +216,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openMenu(View view) {
-        menuLayout.setVisibility(View.VISIBLE);
+        //menuLayout.setVisibility(View.VISIBLE);
         arrowButton.setRotation(180);
-        arrowButton.setTranslationY(0);
+        menuLayout.setTranslationY(0);
     }
 
     private void closeMenu(View view) {
-        menuLayout.setVisibility(View.GONE);
+        //menuLayout.setVisibility(View.GONE);
         arrowButton.setRotation(0);
-        arrowButton.setTranslationY(250*view.getResources().getDisplayMetrics().density);
+        menuLayout.setTranslationY(250*view.getResources().getDisplayMetrics().density);
     }
 }
 

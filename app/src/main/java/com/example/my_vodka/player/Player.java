@@ -22,7 +22,7 @@ public class Player implements View.OnClickListener {
 
     private void updateScore() {
         if (score != null) {
-            score.setText(String.valueOf(this.clickCount));
+            score.setText(String.valueOf(this.alcoolLevel));
         }
     }
 
