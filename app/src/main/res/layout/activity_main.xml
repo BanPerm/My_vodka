@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/barbackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageButton
         android:id="@+id/player"
         android:layout_width="90dp"
@@ -21,7 +34,7 @@
 
     <Button
         android:id="@+id/marketButton"
-        android:layout_width="200dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:contentDescription="@string/de_l_alcool"
         android:scaleType="fitXY"
@@ -30,26 +43,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/preferences"
+        app:layout_constraintVertical_bias="0.020" />
 
     <Button
         android:id="@+id/preferences"
-        android:layout_width="200dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:contentDescription="@string/de_l_alcool"
         android:scaleType="fitXY"
         android:text="Options"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/quitButton"
-        android:layout_width="200dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:contentDescription="@string/de_l_alcool"
         android:scaleType="fitXY"
